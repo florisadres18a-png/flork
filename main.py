@@ -27,7 +27,7 @@ def date(message):
     bot.send_message(message.chat.id, "Случайное число:" +str(randint(1, 1000)))
 
 
-@bot.message_handfler(comands={'image'})
+@bot.message_handler(comands={'image'})
 def send_image(message):
     try:
         file = open("image.jpg", 'rb')
