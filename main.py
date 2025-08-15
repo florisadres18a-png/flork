@@ -83,7 +83,7 @@ def answer(message):
             button5 = telebot.types.InlineKeyboardButton("5", callback_data="5")
             button6 = telebot.types.InlineKeyboardButton("6", callback_data="6")
             keyboard2.add(button1, button2, button3, button4, button5,button6)
-            bot.send_message(message.chat.id,"Угадай число на кубике", reply_markup=keyboard2)
+            bot.send_dice(message.chat.id,"Угадай число на кубике", reply_markup=keyboard2)
         else:
             bot.send_message(message.chat.id, text)
     except Exception as e:
