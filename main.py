@@ -75,7 +75,7 @@ def answer(message):
             else:
                 bot.send_message(message.chat.id, "Попробуй еще раз")
         elif text == "Игра в кубик":
-            keyboard2 = telebot.types.ReplyKeyboardMarkup(row_width=3)
+            keyboard2 = telebot.types.InlineKeyboardMarkup(row_width=3)
             button1 = telebot.types.InlineKeyboardButton("1", callback_data="1")
             button2 = telebot.types.InlineKeyboardButton("2", callback_data="2")
             button3 = telebot.types.InlineKeyboardButton("3", callback_data="3")
