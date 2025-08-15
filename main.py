@@ -71,7 +71,7 @@ def answer(message):
     except Exception as e:
         bot.send_message(message.chat.id, f"Ошибка: {e}")
 
-@bot.callback_query_handfler(func=lambda call: call.data in ('1' '2,' '3', '4', '5', '6'))
+@bot.callback_query_handler(func=lambda call: call.data in ('1' '2,' '3', '4', '5', '6'))
 def dice_answer(call):
     value = bot.send_message(call.message.chat.id, emoji='').dice.value
     if str(value) == call.data:
