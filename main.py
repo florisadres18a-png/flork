@@ -25,15 +25,14 @@ def webhook():
 
 @bot.message_handler(commands=["start"])
 def send_welcome(message):
-    def send_welcome (message) :
-        try:
-            keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-            button1 = telebot.types.KeyboardButton(text="Игра в кубик")
-            button2 = telebot.types.KeyboardButton(text="Игровой автомат")
-            keyboard.add(button1, button2)
-            bot.send_message(message.chat.id, "Привет,меня зовут Бот", reply_markup=keyboard)
-        except Exception as e:
-            bot.send_message(message.chat.id, f"Ошибка {e}" )
+    try:
+        keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
+        button1 = telebot.types.KeyboardButton(text="Игра в кубик")
+        button2 = telebot.types.KeyboardButton(text="Игровой автомат")
+        keyboard.add(button1, button2)
+        bot.send_message(message.chat.id, "Привет,меня зовут Бот", reply_markup=keyboard)
+    except Exception as e:
+        bot.send_message(message.chat.id, f"Ошибка {e}" )
 
 
 
