@@ -141,23 +141,6 @@ def send_image(send_message) :
 
 
 @bot.message_handler(content_types=["text"])
-def answer(message):
-    try:
-        text = message.text
-        if text == "Привет":
-            bot.send_message(message.chat.id,"Привет")
-        elif text =="Как дела":
-            bot.send_message(message.chat.id, "Отлично")
-        elif text == "Как тебя зовут" :
-            bot.send_message(message.chat.id,"Меня зовут бот")
-        elif text =="Игра в автомат":
-            value = bot.send_dice(message.chat.id, emoji="🎰").dice.value
-            if value in (1, 16, 22, 32, 43, 48):
-                bot.send_message(message.chat.id, "Победа")
-            elif value == 64:
-                bot.send_message(message.chat.id, "Jacpot")
-            else:
-                @bot.message_handler(content_types=['text'])
 def handle_text(message):
     try:
         text = message.text
@@ -192,7 +175,9 @@ def handle_text(message):
             send_long_message(message.chat.id, answer, parse_mode="MarkdownV2")
             bot.delete_message(message.chat.id, message.id+1)
     except Exception as e:
-        def escape_markdown(text: str) -> str:
+        bot.send_message(message.chat.id, f"Ошибка: {e}")
+        
+def escape_markdown(text: str) -> str:
     escape_chars = r'[_*[\]()~`>#+\-=|{}.!]'
     return re.sub(f'({escape_chars})', r'\\\1', text)
 
@@ -202,7 +187,7 @@ def send_long_message(chat_id, text, parse_mode="MarkdownV2"):
     safe_text = escape_markdown(text)
     for i in range(0, len(safe_text), MAX_LEN):
         bot.send_message(chat_id, safe_text[i:i+MAX_LEN], parse_mode=parse_mode)
-        bot.send_message(message.chat.id, f"Ошибка: {e}")
+        
 if __name__ == "__main__":
     server_url = os.getenv("RENDER_EXTERNAL_URL")
     if server_url and TOKEN:
