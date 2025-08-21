@@ -12,6 +12,7 @@ import json
 from tensorflow.keras.models import load_model
 from PIL import Image, ImageOps
 from flask import Flask, request
+import re
 
 TOKEN = os.getenv("BOT_TOKEN") 
 bot = telebot.TeleBot (TOKEN, parse_mode=None)
